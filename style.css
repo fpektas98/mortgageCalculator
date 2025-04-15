@@ -1,0 +1,391 @@
+body {
+    background-color: #ecf2ff;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .result-container {
+    display: flex;
+    border-radius: 32px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 800px;
+    height: 550px;
+    background-color: white;
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .result-left {
+    background: white;
+    border-radius: 32px 0 0 32px;
+    width: 400px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .result-left h5 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #252e47;
+    margin: 0;
+  }
+  
+  .btn {
+    color: #303b59;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .result-right {
+    width: 400px;
+    padding: 40px;
+    background-color: #133040;
+    border-radius: 0 32px 32px 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+  }
+  
+  .result-right h5 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  
+  .result-right p {
+    font-size: 0.9rem;
+    opacity: 0.7;
+    line-height: 1.5;
+  }
+  
+  .calculate-btn {
+    background-color: #f4e04d;
+    color: #252e47;
+    border: none;
+    border-radius: 30px;
+    padding: 12px;
+    width: 75%;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .calculate-btn:hover {
+    background-color: #ebee97;
+  }
+  
+  label {
+    color: #6e7b82;
+    font-size: 0.8rem;
+    margin-bottom: 5px;
+    display: block;
+    text-align: left;
+  }
+  
+  .input-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  
+  .input-container input {
+    width: 100%;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 0.9rem;
+    height: 40px;
+  }
+  
+  .input-container input:focus {
+    box-shadow: none;
+    border-color: #d2da5b;
+  }
+  
+  .input-container.mortgage-amount::before {
+    content: "£";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    background-color: #e3f4fc;
+    padding: 10px 8px;
+    border-radius: 5px 0 0 5px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    border-right: none;
+  }
+  
+  .input-container.mortgage-amount input {
+    padding-left: 30px;
+    border-left: none;
+  }
+  
+  .input-container.mortgage-term::after {
+    content: "years";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    background-color: #e3f4fc;
+    padding: 10px 8px;
+    border-radius: 0 5px 5px 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    border-left: none;
+  }
+  
+  .input-container.mortgage-term input {
+    padding-right: 60px;
+    border-right: none;
+  }
+  
+  .input-container.interest-rate::after {
+    content: "%";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #333;
+    background-color: #e3f4fc;
+    padding: 10px 8px;
+    border-radius: 0 5px 5px 0;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    border: 1px solid #d3d3d3;
+    border-left: none;
+  }
+  
+  .input-container.interest-rate input {
+    padding-right: 30px;
+    border-right: none;
+  }
+  
+  .input-container:focus-within::before,
+  .input-container:focus-within::after {
+    background-color: #fdfdb0;
+    border: 1px solid #d2da5b;
+  }
+  
+  .input-container.mortgage-amount:focus-within::before {
+    border-right: none;
+  }
+  
+  .input-container.mortgage-term:focus-within::after,
+  .input-container.interest-rate:focus-within::after {
+    border-left: none;
+  }
+  
+  .form-check {
+    display: flex;
+    align-items: center;
+    border: 1px solid #5d5d5f;
+    border-radius: 10px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+    padding: 0 12px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    background-color: white;
+    position: relative;
+  }
+  
+  .form-check-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .form-check-label {
+    position: relative;
+    font-size: 0.9rem;
+    color: #252e47;
+    padding: 8px 0;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+  }
+  
+  .form-check-label::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #5d5d5f;
+    border-radius: 50%;
+    background-color: white;
+    transition: all 0.2s ease;
+  }
+  
+  .form-check-input:checked + .form-check-label::before {
+    background-color: #cbcf8c;
+    border-color: #cbcf8c;
+    box-shadow: inset 0 0 0 3px white;
+  }
+  
+  .form-check:has(.form-check-input:checked) {
+    background-color: #cbcf8c;
+  }
+  
+  .form-check:not(:has(.form-check-input:checked)) {
+    background-color: white;
+  }
+  
+  .form-check:hover {
+    border-color: #cbcf8c;
+  }
+  
+  .input-container.error input {
+    border-color: #ff0000;
+  }
+  
+  .input-container.error::before,
+  .input-container.error::after {
+    border-color: #ff0000;
+  }
+  
+  .input-container.error.mortgage-amount::before {
+    border-right: none;
+  }
+  
+  .input-container.error.mortgage-term::after,
+  .input-container.error.interest-rate::after {
+    border-left: none;
+  }
+  
+  .form-check.error {
+    border-color: #ff0000;
+  }
+  
+  .error-message {
+    display: none;
+    color: #ff0000;
+    font-size: 0.8rem;
+    margin-top: 5px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+  
+  .error-message.active {
+    display: block;
+    max-height: 50px;
+    transition: max-height 0.3s ease-in;
+  }
+  
+  .row.g-4 {
+    row-gap: 1rem;
+  }
+  
+  /* Results styling */
+  .result-right {
+    padding: 40px;
+    color: white;
+    text-align: left;
+  }
+  
+  .results-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .results-description {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    margin-bottom: 20px;
+    line-height: 1.5;
+  }
+  
+  .results-divider {
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.2);
+    margin: 20px 0;
+  }
+  
+  .results-subtitle {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+  
+  .monthly-payment {
+    font-size: 2.2rem;
+    font-weight: 600;
+    margin-bottom: 25px;
+    color: #f4e04d;
+  }
+  
+  .total-repayment {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.9rem;
+  }
+  
+  .total-repayment span:last-child {
+    font-weight: 600;
+  }
+  
+  @media (max-width: 768px) {
+    .result-container {
+      flex-direction: column;
+      width: 320px;
+      height: auto;
+    }
+  
+    .result-left,
+    .result-right {
+      width: 100%;
+    }
+  
+    .result-right {
+      border-radius: 0 0 32px 32px;
+    }
+  
+    .result-left {
+      border-radius: 32px 32px 0 0;
+    }
+  }
